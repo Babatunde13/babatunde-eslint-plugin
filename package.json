@@ -1,0 +1,16 @@
+{
+  "name": "eslint-plugin-no-double-underscore",
+  "description": "Our first ESLint plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "mocha": "^9.0.3"
+  },
+  "scripts": {
+    "test": "mocha ./**.spec.js"
+  },
+  "dependencies": {
+    "chai": "^4.3.4"
+  }
+}
