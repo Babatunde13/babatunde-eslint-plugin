@@ -51,13 +51,14 @@ module.exports.rules = {
         create(context) {
             return {
                 VariableDeclaration(node) {
-                    if (node.kind === 'var' && node.parent?.parent.type === 'FunctionStatement') {
+                    console.log(node.parent?.parent.type)
+                    if (node.kind === 'var' && node.parent?.parent.type === 'FunctionDeclaration') {
                         context.report({
                             node,
                             message: 'Unexpected "var" in a function',
-                            fix: (fixer) => {
-                                return fixer.replaceText(node.kind, 'let')
-                            }
+                            // fix: (fixer) => {
+                            //     return fixer.replaceText(node.kind, 'let')
+                            // }
                         })
                     }
                 }

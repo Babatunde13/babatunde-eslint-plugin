@@ -24,7 +24,7 @@ async function isInvalidLintRule(
             invalid: [
                 {
                     code,
-                    errors: [{ message: options.message || '' }],
+                    errors: [{ message: options.message || 'Unexpected "var" in a function' }],
                     filename: options.filename
                 }
             ]
@@ -46,24 +46,24 @@ async function isValidLintRule(
     code,
     rule,
     options = {}
-){
-    const tester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } })
-
-    try {
-        await tester.run('', rule, {
-            valid: [
-                {
-                    code,
-                    filename: options.filename
-                }
-            ],
-            invalid: []
-        })
-
-        return {
-            data: {}
-        }
-    } catch (e) {
+    ){
+        const tester = new RuleTester({ parserOptions: { ecmaVersion: 2015 } })
+        
+        try {
+            await tester.run('', rule, {
+                valid: [
+                    {
+                        code,
+                        filename: options.filename
+                    }
+                ],
+                invalid: []
+            })
+            
+            return {
+                data: {}
+            }
+        } catch (e) {
         return {
             error: e.message
         }
